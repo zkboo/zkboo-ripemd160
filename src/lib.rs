@@ -125,12 +125,14 @@ fn line<B: Backend>(
     let [mut a, mut b, mut c, mut d, mut e] = init.clone();
     for j in 0..80 {
         let f_index = if left { j } else { 79 - j };
-        let t = (a
-            + round_fn(f_index, b.clone(), c.clone(), d.clone())
-            + block[r[j]].clone()
-            + k[j / 16])
-            .rotate_left(s[j])
-            + e.clone();
+        let mut t = a + round_fn(f_index, b.clone(), c.clone(), d.clone()) + block[r[j]].clone();
+        // Fold in the round constant, skipping the round whose constant is zero (K_LEFT[0] and
+        // K_RIGHT[4]) — adding zero is a wasted carry chain.
+        let kt = k[j / 16];
+        if kt != 0 {
+            t = t + kt;
+        }
+        let t = t.rotate_left(s[j]) + e.clone();
         [a, b, c, d, e] = [e, t, b, c.rotate_left(10), d];
     }
     return [a, b, c, d, e];
