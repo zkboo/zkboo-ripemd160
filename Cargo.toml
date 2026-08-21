@@ -5,6 +5,10 @@ edition = "2024"
 license = "LGPL-3.0-or-later"
 description = "RIPEMD-160 as a ZKBoo circuit."
 repository = "https://github.com/zkboo/zkboo-ripemd160"
+documentation = "https://docs.rs/zkboo-ripemd160"
+readme = "README.md"
+keywords = ["zk", "zero-knowledge", "zkboo", "ripemd160", "bitcoin"]
+categories = ["cryptography", "no-std"]
 
 [dependencies]
 zkboo = { version = "1.0.0", features = ["u32"] }
