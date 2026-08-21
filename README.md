@@ -16,9 +16,10 @@ let digest = ripemd160(frontend.allocator(), msg); // [WordRef<B, u8>; 20]
 
 Validated against the standard vectors from the RIPEMD-160 paper and against the host-side `ripemd` (RustCrypto) implementation, including padding-boundary and multi-block lengths.
 
-## 🚧 Warning 🚧
+## ⚠️ Unaudited ⚠️
 
-Work in progress, not yet suitable for production. Security has not been audited.
+This implementation has not undergone an external security review.
+Use at your own risk.
 
 ## License
 
