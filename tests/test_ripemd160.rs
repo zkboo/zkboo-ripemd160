@@ -10,6 +10,7 @@ use zkboo::{
     executor::{OwnedFlexibleWordPool, exec},
 };
 use zkboo_ripemd160::ripemd160;
+use zkboo::executor::ExecOptions;
 
 type WP = OwnedFlexibleWordPool<usize>;
 
@@ -34,7 +35,7 @@ fn to_hex(bytes: &[u8]) -> String {
 }
 
 fn digest(msg: &[u8]) -> String {
-    let out = exec::<_, WP>(&Ripemd160Circuit { msg: msg.to_vec() }).u8;
+    let out = exec::<_, WP, _>(&Ripemd160Circuit { msg: msg.to_vec() }, ExecOptions::new()).u8;
     assert_eq!(out.len(), 20);
     return to_hex(&out);
 }
