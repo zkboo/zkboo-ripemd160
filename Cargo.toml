@@ -1,6 +1,6 @@
 [package]
 name = "zkboo-ripemd160"
-version = "1.0.0"
+version = "1.2.0"
 edition = "2024"
 license = "LGPL-3.0-or-later"
 description = "RIPEMD-160 as a ZKBoo circuit."
@@ -11,8 +11,8 @@ keywords = ["zk", "zero-knowledge", "zkboo", "ripemd160", "bitcoin"]
 categories = ["cryptography", "no-std"]
 
 [dependencies]
-zkboo = { version = "1.0.0", features = ["u32"] }
+zkboo = { version = "1.2.0", features = ["u32"] }
 
 [dev-dependencies]
-zkboo = { version = "1.0.0", features = ["u32"] }
+zkboo = { version = "1.2.0", features = ["u32"] }
 ripemd = "0.1"
